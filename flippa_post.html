@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Online Auction Sale Prediction</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/blog.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top grad">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Explorations in <b>Machine Learning</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <!--
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <h1 class="mt-4">Online Auction Sale Prediction</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">Garrett Chestnut</a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on June 8, 2020</p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="images/flippa_logo.png" alt="">
+
+        <hr>
+
+        <div class="container">
+          <h1 id="using-machine-learning-to-predict-the-sale-price-of-digital-asset-auctions-on-flippa-com">Using Machine Learning to Predict the Sale Price of Digital Asset Auctions on Flippa.com</h1>
+          <p><em>An ongoing study by Garrett Chestnut, undergraduate CS student at Stevens Institute of Technology.</em></p>
+          <p><em><strong>Commenced:</strong></em> June 8th, 2020  /  <em><strong>Last Updated:</strong></em> June 21th, 2020</p>
+          <hr>
+          <h3 id="introduction">Introduction</h3>
+          <p>For the past few years, I have been an active member of the Flippa online community, building and selling many different assets (primarily android applications). During that time I have developed a hypothesis relating to the diversity of asset valuations within sub-industries (e.g., e-commerce websites, domain names, Amazon FBA, etc). By observing auctions unfold, I noticed that bidders cared very little about the content behind each property (i.e., subject-matter, topic, niche) and based most, if not all, of their appraisal on metrics. By “metrics”, I mean traffic, downloads, uniques, profit, age, and other important features.</p>
+          <p>However, this isn’t surprising. Most of the goods on Flippa sell for less than $5000, making them less significant than the ones sold on sites like Exchange Marketplace, which have a much higher average value. Due to this reality, buyers are less interested in holding onto profitable assets for the long-term, which would require a strong or steadily growing niche, and more concerned in a quick ROI. </p>
+          <p>A relatively low-risk method of obtaining an efficient ROI is to invest in assets that are already proving themselves within key metrics. In this study, I have decided to utilize elementary and intermediate machine learning models to determine if asset features (obtained through Flippa’s public API) truly have a high degree of impact on the eventual auction sale price.</p>
+          <p><em>*Note: This first portion of the study has been restricted to premium Flippa listings, since those are more likely to have equal visibility in the marketplace.</em></p>
+          <hr>
+          <h3 id="features">Features</h3>
+          <p>The full list of the metrics I used to train my subsequent models is as follows:</p>
+          <ul>
+            <li>Downloads</li>
+            <li>Average profit</li>
+            <li>Buy-It-Now price</li>
+            <li>Display price</li>
+            <li>Listing duration</li>
+            <li>Has verified revenue (yes/no)</li>
+            <li>Has verified traffic (yes/no)</li>
+            <li>Page views per month</li>
+            <li>Profit per month</li>
+            <li>Asset age</li>
+            <li>Property type</li>
+            <li>Uniques per month</li>
+            <li>Industry</li>
+          </ul>
+          <p>Several of these features depend on the property type, so their values defaulted to zero if they weren’t applicable.</p>
+          <hr>
+          <p>My first attempt to develop a relationship between the aforementioned metrics and current price (the dependent variable), was with basic regression (Multiple and Polynomial). I used a dataset with 100 entries, reserving 20 of those for testing.</p>
+          <p>A prediction was determined to be accurate if it fell within $100 of the true value, or deviated from it by no more than 5% (this definition is consistent throughout my research).</p>
+          <h3 id="basic-regression-accuracy">Basic Regression Accuracy</h3>
+          <table border="1">
+            <tbody>
+              <tr>
+                <td>Multiple Linear Regression</td>
+                <td>Polynomial Regression <i>(degree=3)</i></td>
+              </tr>
+              <tr>
+                <td>15%</td>
+                <td>15%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Both Multiple Linear and Polynomial Regression managed to make the same number of good predictions, each accurately guessing a different set of 3 out of 20 sale prices. Of course, this is incredibly poor, and offers no significant support for my hypothesis. My next trial utilizes SVR (Support Vector Regression), a more advanced form of regression, in the hopes of establishing a more significant relationship.</p>
+          <h3 id="support-vector-regression-svr-accuracy">Support Vector Regression (SVR) Accuracy</h3>
+          <table border="1">
+            <thead>
+              <tr>
+              <th><strong>Kernel</strong></th>
+              <th><strong>Accuracy</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td>Linear</td>
+              <td>0%</td>
+              </tr>
+              <tr>
+              <td>RBF (Radial Basis Function)</td>
+              <td>20%</td>
+              </tr>
+              <tr>
+              <td>Polynomial</td>
+              <td>10%</td>
+              </tr>
+              <tr>
+              <td>Sigmoid</td>
+              <td>5%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Interestingly, the results from SVR were fairly on par with the basic regression techniques. RBF, the most popular Kernel used for SVR, performed the best out of the four, with 20% of its predictions considered close. Below is a graph that displays the prediction results from the RBF kernel alongside the testing values.</p>
+          <p><img src="https://lh6.googleusercontent.com/gqfwoMVkOY4YUzQR5GMRVD6HcHxgxx-krPYYI-kGy1SDY8TflgAweUt3VTvO_WgYsDeMNJ3nKb_PzaBydg0rY6ipeHRKRLvw9VYlzw-4s2-urNtpiUhwi9CKT--GRyzoOTCp7tTP" alt="Sale Price Predictions vs Actual Price"></p>
+          
+        </div>
+
+        <hr>
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">GitHub</h5>
+          <div class="card-body">
+            Want to see the code? Here's a link to the GitHub repository I've dedicated to my Machine Learning projects: www.include-said-link.com
+          </div>
+        </div>
+        
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Garrett Chestnut 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

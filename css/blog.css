@@ -1,0 +1,67 @@
+/*!
+ * Start Bootstrap - Blog Home (https://startbootstrap.com/template-overviews/blog-home)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+}
+.grad {
+  background-image: linear-gradient(to right, #155a95 , #15915e);
+}
+th, td {
+  padding: 5px;
+}
+table {
+  margin: 20px;
+}
+
+#page-title {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+
+/* profile card css */
+.card_prof {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+  padding: 5px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+#socials {
+  margin: 24px 0;
+}
+
+/*  end prof css  */
