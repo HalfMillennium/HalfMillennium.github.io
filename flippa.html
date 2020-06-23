@@ -132,25 +132,30 @@
             <tbody>
               <tr>
               <td>Linear</td>
-              <td>0%</td>
-              </tr>
-              <tr>
-              <td>RBF (Radial Basis Function)</td>
-              <td>20%</td>
-              </tr>
-              <tr>
-              <td>Polynomial</td>
               <td>10%</td>
               </tr>
               <tr>
-              <td>Sigmoid</td>
+              <td>RBF (Radial Basis Function)</td>
+              <td>25%</td>
+              </tr>
+              <tr>
+              <td>Polynomial</td>
               <td>5%</td>
+              </tr>
+              <tr>
+              <td>Sigmoid</td>
+              <td>25%</td>
               </tr>
             </tbody>
           </table>
-          <p>Interestingly, the results from SVR were fairly on par with the basic regression techniques. RBF, the most popular Kernel used for SVR, performed the best out of the four, with 20% of its predictions considered close. Below is a graph that displays the prediction results from the RBF kernel alongside the testing values.</p>
+          <p>Unsurprisingly, the results from the different SVR kernels were quite varied. Sigmoid and RBF (the most popular SVR kernel), performed the best out of the four, with 25% of their predictions considered accurate. However, many of the sigmoid kernel predictions were negative values, which is indicative of an exceptionally poor fit; Because of this, RBF was preferred. Below is a graph that displays the prediction results from the RBF kernel alongside the testing values.</p>
           <p><img src="https://lh6.googleusercontent.com/gqfwoMVkOY4YUzQR5GMRVD6HcHxgxx-krPYYI-kGy1SDY8TflgAweUt3VTvO_WgYsDeMNJ3nKb_PzaBydg0rY6ipeHRKRLvw9VYlzw-4s2-urNtpiUhwi9CKT--GRyzoOTCp7tTP" alt="Sale Price Predictions vs Actual Price"></p>
-          
+          <p>At this point, I started to consider the size of my dataset. My next trial with SVR was with 400 fresh data entries from the Flippa API. The following chart reflects those results (I’ve altered the plot format to display the data in a line, for readability).</p>
+          <p><img src="https://lh5.googleusercontent.com/2wOGZzqpH7DTQPXRQOfPtirQUs6u_C2MsGrWuEKdwmIH-MRRv5mjmoy3FjXccN0TYcbmWXdLTgVPpoAubw4OeEIq_zJBg3uOsS_gBx_QK6SIw8RQafqKGsE3EDPvYeiVTtCpsm8O"></p>
+          <p>Although the prediction line coincides relatively well with the testing data at certain points (most notably predictions 57-60), the accuracy of Support Vector Regression remains consistently poor, coming close only 20% of the time. Clearly, SVR isn’t the most appropriate model to employ for this dataset, so I continued my study with Decision Tree regression - more specifically, Random Forest regression.<br><br>Decision tree regression works by splitting data into smaller groups, or “leaves” based on a favored feature. The algorithm calculates which feature provides the greatest information gain, and uses it to determine the best locations to split the data. Random Forest regression differs from standard DTR, in that instead of viewing the entire dataset, it randomly chooses a variety of subsets of features to test and builds many different decision trees - hence “forest”. Whichever one is most effective in predicting the dependent variable is ultimately selected.<br><br>For the first trial of Random Forest, I returned to my original dataset of 100 entries. Below is a graph representing those results.</p>
+          <p><img src="https://lh3.googleusercontent.com/HVbkXpZMVrSoMzMeFiESYrUTJNYLTF21h8ADN7Mei_pZRu0e-NIodtNzKbXlcGp-PcwSd7eVdPoLLSLrpX0dxm8GXVu_e9nEFTkUlRBxmOjjhyfgmgzKr-THgQDWusfOM2rAYFDu"></p>
+          <p>On first glance, these results appear to be much better than previous trials with this dataset - and this is partially true. The predictions, on average, were significantly closer to the actual values. Despite this, though, only 25% of predictions were considered accurate per my specification.<br><br>Things change when I switch datasets, however. Here is another graph displaying a second trial with the 400-entry CSV file (again, plot format altered for readability).</p>
+          <p><img src="https://lh4.googleusercontent.com/QUSkGr4bxcUn88gT162POGM8FJKS-vgpVgVbLCipo8nxZgdunVzDFcZ79VyX86C5yYcwP05_N1lvtNwtieUcqCRkm4HEu_cKlnMFWQdfij61T2eRqeHnIxhotV9tpiS6qSxzFAXd"></p>
         </div>
 
         <hr>
