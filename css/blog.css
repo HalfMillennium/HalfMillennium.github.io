@@ -21,6 +21,11 @@ table {
   padding-bottom: 8px;
 }
 
+.normal-size-blue {
+  font-size: 16px;
+  color: #155a95;
+}
+
 
 /* profile card css */
 .card_prof {
@@ -65,3 +70,4 @@ button:hover, a:hover {
 }
 
 /*  end prof css  */
+
