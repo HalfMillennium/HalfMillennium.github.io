@@ -156,7 +156,8 @@
           <p><img src="https://lh3.googleusercontent.com/HVbkXpZMVrSoMzMeFiESYrUTJNYLTF21h8ADN7Mei_pZRu0e-NIodtNzKbXlcGp-PcwSd7eVdPoLLSLrpX0dxm8GXVu_e9nEFTkUlRBxmOjjhyfgmgzKr-THgQDWusfOM2rAYFDu"></p>
           <p>On first glance, these results appear to be much better than previous trials with this dataset - and this is partially true. The predictions, on average, were significantly closer to the actual values. Despite this, though, only 25% of predictions were considered accurate per my specification.<br><br>Things change when I switch datasets, however. Here is another graph displaying a second trial with the 400-entry CSV file (again, plot format altered for readability).</p>
           <p><img src="https://lh4.googleusercontent.com/QUSkGr4bxcUn88gT162POGM8FJKS-vgpVgVbLCipo8nxZgdunVzDFcZ79VyX86C5yYcwP05_N1lvtNwtieUcqCRkm4HEu_cKlnMFWQdfij61T2eRqeHnIxhotV9tpiS6qSxzFAXd"></p>
-          <p>In this trial, accuracy jumped up to 43.75%, which is clearly a massive improvement. The fact that there was a significant increase in accuracy with additional entries suggests that this could be the best model for this dataset.</p>
+          <p>In this trial, accuracy jumped up to 43.75%, which is clearly a massive improvement. The fact that there was a significant increase in accuracy with additional entries suggests that this could be the best model for this dataset.</p><br><br>
+          <p>At this point, I decided to test the model more objectively. While it indoubtedly shows promise, Random Forest regression on this dataset only achieved an R-squared value of -3.6, which is nowhere near 1.<br><br>This value changes significantly when I increase the number observations from 400 to 1000. With this adjustment, the model soared to 77% accuracy with my personal rating system, and reached an impressive R-squared value of 0.82.</p>
         </div>
 
         <hr>
